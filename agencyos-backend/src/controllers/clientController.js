@@ -1,12 +1,8 @@
 import { createClient, getClients, getClientById } from "../services/clientService.js";
 
 export const create = async (req, res) => {
-    try {
         const client = await createClient(req.body, req.user.userId);
         res.status(201).json(client);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
 };
 
 export const getAll = async (req, res) => {

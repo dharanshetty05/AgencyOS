@@ -9,6 +9,7 @@ import projectRoutes from "./routes/projectRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import logRoutes from "./routes/logRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
+import errorMiddleware from "./middlewares/errorMiddleware.js";
 
 dotenv.config();
 
@@ -36,3 +37,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 })
+
+app.use(errorMiddleware);
