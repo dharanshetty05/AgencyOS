@@ -1,4 +1,4 @@
-import { createClient, getClients, getClientById } from "../services/clientService.js";
+import { createClient, getClients, getClientById, updateClient } from "../services/clientService.js";
 
 export const create = async (req, res) => {
         const client = await createClient(req.body, req.user.userId);
@@ -25,3 +25,20 @@ export const getOne = async (req, res) => {
         res.status(404).json({ message: err.message });
     }
 };
+
+export const update = asyncHandler(async (req, res) => {
+    const client = await updateClient(
+        req.params.id,
+        req.body,
+        req.user.userId
+    );
+    res.json(client);
+});
+
+export const remove = asyncHandler(async (req, res) => {
+    const result = await deleteClient(
+        req.params.id,
+        req.user.userId
+    );
+    res.json(result);
+});
