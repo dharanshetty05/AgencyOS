@@ -1,4 +1,4 @@
-import { createTask, updateTaskStatus, getTasksByProject } from "../services/taskService.js";
+import { createTask, updateTaskStatus, getTasksByProject, deleteTask } from "../services/taskService.js";
 
 export const create = async (req, res) => {
     try {
@@ -33,3 +33,12 @@ export const getByProject = async (req, res) => {
         res.status(403).json({ message: err.message });
     }
 };
+
+export const remove = asyncHandler(async (req, res) => {
+    const result = await deleteTask(
+        req.params.id,
+        req.user.userId
+    );
+
+    res.json(result);
+});

@@ -74,3 +74,18 @@ export const getTasksByProject = async (projectId, userId) => {
         createdBy: userId,
     });
 };
+
+export const deleteTask = async (taskId, userId) => {
+    const task = await Task.findOne({
+        _id: taskId,
+        createdBy: userId,
+    });
+
+    if (!task) {
+        throw new AppError("Task not found or unauthorized", 404);
+    }
+
+    await task.deleteOne();
+
+    return { message: "Task deleted" };
+};
