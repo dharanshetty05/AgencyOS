@@ -1,4 +1,5 @@
 import { createProject, deleteProject, getProjectsByClient, updateProject } from "../services/projectService.js";
+import asyncHandler from 'express-async-handler';
 
 export const create = async (req, res) => {
     try {

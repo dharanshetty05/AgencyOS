@@ -1,7 +1,8 @@
 import express from "express";
-import { create, getByClient, remove } from "../controllers/projectController.js";
+import { create, getByClient, update, remove } from "../controllers/projectController.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { roleMiddleware } from "../middlewares/roleMiddleware.js";
+import { validateObjectId } from "../middlewares/validateObjectId.js";
 
 const router = express.Router();
 

@@ -2,6 +2,7 @@ import express from "express";
 import { create, updateStatus, getByProject, remove } from "../controllers/taskController.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { roleMiddleware } from "../middlewares/roleMiddleware.js";
+import { validateObjectId } from "../middlewares/validateObjectId.js";
 
 const router = express.Router();
 

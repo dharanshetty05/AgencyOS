@@ -1,4 +1,5 @@
 import { createClient, getClients, getClientById, updateClient } from "../services/clientService.js";
+import asyncHandler from 'express-async-handler';
 
 export const create = async (req, res) => {
         const client = await createClient(req.body, req.user.userId);
